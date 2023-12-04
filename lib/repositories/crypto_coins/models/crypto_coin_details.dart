@@ -1,17 +1,17 @@
-import 'package:equatable/equatable.dart';
+import 'crypto_coin.dart';
 
-class CryptoCoinDetail extends Equatable {
+class CryptoCoinDetail extends CryptoCoin {
   const CryptoCoinDetail({
-    required this.priceInUSD,
-    required this.imageUrl,
+    required super.priceUSD,
+    required super.imageURL,
     required this.toSymbol,
     required this.lastUpdate,
     required this.hight24Hour,
-    required this.low24Hours,
+    required this.low24Hours, 
+    required super.name, 
   });
 
-  final double priceInUSD;
-  final String imageUrl;
+
   final double low24Hours;
   final double hight24Hour;
   final String toSymbol;
@@ -23,7 +23,7 @@ class CryptoCoinDetail extends Equatable {
         lastUpdate,
         hight24Hour,
         low24Hours,
-        priceInUSD,
-        imageUrl,
+        priceUSD,
+        imageURL,
       ];
 }

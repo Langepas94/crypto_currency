@@ -1,10 +1,9 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'package:bloc/bloc.dart';
 import 'package:crypto_currency/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:crypto_currency/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+
 
 part 'crypto_list_event.dart';
 part 'crypto_list_state.dart';

@@ -46,12 +46,13 @@ final usdData = coinData['USD'] as Map<String, dynamic>;
     final low24Hours = usdData['LOW24HOUR'];
 
 return CryptoCoinDetail(
-  priceInUSD: price, 
-  imageUrl: '$imageBaseURL$imageUrl', 
+  priceUSD: price, 
+  imageURL: '$imageBaseURL$imageUrl', 
   toSymbol: toSymbol, 
   lastUpdate: DateTime.fromMillisecondsSinceEpoch(lastUpdate), 
   hight24Hour: hight24Hour, 
-  low24Hours: low24Hours);
+  low24Hours: low24Hours, 
+  name: currencyCode);
   }
 }
 

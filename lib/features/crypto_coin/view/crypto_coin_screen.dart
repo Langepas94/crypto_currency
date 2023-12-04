@@ -1,5 +1,5 @@
 import 'package:crypto_currency/features/crypto_coin/bloc/crypto_coin_details_bloc.dart';
-import 'package:crypto_currency/features/crypto_coin/widgets.dart/base_card.dart';
+import 'package:crypto_currency/features/crypto_coin/widgets.dart/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -13,24 +13,22 @@ class CryptoCoinScreen extends StatefulWidget {
 }
 
 class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
-final _cryptoBloc = CryptoCoinDetailsBloc(GetIt.I<AbstractCoinsRepository>());
-  
-  CryptoCoin? coin;
+  final _cryptoBloc = CryptoCoinDetailsBloc(GetIt.I<AbstractCoinsRepository>());
+
+  CryptoCoin? _coin;
 
   @override
   void didChangeDependencies() {
     final args = ModalRoute.of(context)?.settings.arguments as CryptoCoin;
-  //  assert(args != null && args is CryptoCoin, 'You must provide String args');
-    coin = args as CryptoCoin;
-    _cryptoBloc.add(LoadCryptoCoinDetails(currencyCode: coin!.name));
-
+    _coin = args as CryptoCoin;
+    _cryptoBloc.add(LoadCryptoCoinDetails(currencyCode: _coin?.name ?? ''));
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  appBar: AppBar(),
+      appBar: AppBar(),
       body: BlocBuilder<CryptoCoinDetailsBloc, CryptoCoinDetailsState>(
         bloc: _cryptoBloc,
         builder: (context, state) {
@@ -43,11 +41,11 @@ final _cryptoBloc = CryptoCoinDetailsBloc(GetIt.I<AbstractCoinsRepository>());
                   SizedBox(
                     height: 160,
                     width: 160,
-                    child: Image.network(coinDetails.imageUrl),
+                    child: Image.network(coinDetails.imageURL),
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    coin?.name ?? 'Undefined name',
+                    coinDetails.name,
                     style: const TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w700,
@@ -57,7 +55,7 @@ final _cryptoBloc = CryptoCoinDetailsBloc(GetIt.I<AbstractCoinsRepository>());
                   BaseCard(
                     child: Center(
                       child: Text(
-                        '${coinDetails.priceInUSD} \$',
+                        '${coinDetails.priceUSD} \$',
                         style: const TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w700,
@@ -115,4 +113,3 @@ class _DataRow extends StatelessWidget {
     );
   }
 }
-

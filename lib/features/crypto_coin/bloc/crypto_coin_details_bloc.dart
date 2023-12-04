@@ -15,7 +15,7 @@ class CryptoCoinDetailsBloc
   final AbstractCoinsRepository coinsRepository;
 
   Future<void> _loadDetails(LoadCryptoCoinDetails event,
-      Emitter<CryptoCoinDetailsState> state) async {
+      Emitter<CryptoCoinDetailsState> emit) async {
     try {
       if (state is! CryptoCoinDetailsLoaded) {
         emit(CryptoListLoading());

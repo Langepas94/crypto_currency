@@ -7,10 +7,5 @@ import 'package:get_it/get_it.dart';
 
 void main() {
   GetIt.I.registerLazySingleton<AbstractCoinsRepository>(() => CryptoCoinsRepository(dio: Dio()));
-
   runApp(const CryptoCurrencyApp());
 }
-
-
-
-

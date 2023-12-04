@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:crypto_currency/features/crypto_list/bloc/bloc/crypto_list_bloc.dart';
 import 'package:crypto_currency/features/crypto_list/widgets/widgets.dart';
 import 'package:crypto_currency/repositories/crypto_coins/crypto_coins.dart';
